@@ -63,8 +63,14 @@
         <p>本次教程是基于hexo搭建github page.</p>
 <h2 id="基本步骤"><a href="#基本步骤" class="headerlink" title="基本步骤"></a>基本步骤</h2><h3 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ npm install -g hexo   //全局安装hexo</div><div class="line">$ hexo init             //初始化下载</div><div class="line">$ hexo g                //生成静态页面</div><div class="line">$ hexo s                //本地浏览器打开,默认localhost:4000</div></pre></td></tr></table></figure>
 <p>可以熟悉一下文件目录结构</p>
-<h3 id="GitHub配置"><a href="#GitHub配置" class="headerlink" title="GitHub配置"></a>GitHub配置</h3><p> 。 建立仓库，仓库名为【name.github.io】,其中name为自己在github的昵称<br> 。 然后修改hexo安装目录下的_config.yml<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line"></div><div class="line">     <span class="built_in">type</span>: git</div><div class="line"></div><div class="line">     repo:https://         //此处为仓库的https地址,如果设置为ssh，就要配置相应的git config</div><div class="line"></div><div class="line">     branch:master</div></pre></td></tr></table></figure></p>
-<p> 。 输入命令</p>
+<h3 id="GitHub配置"><a href="#GitHub配置" class="headerlink" title="GitHub配置"></a>GitHub配置</h3><ul>
+<li>建立仓库，仓库名为【name.github.io】,其中name为自己在github的昵称</li>
+<li><p>然后修改hexo安装目录下的_config.yml </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">     <span class="built_in">type</span>: git</div><div class="line">     repo:https://...        //此处为仓库的https地址,    </div><div class="line">     如果设置为ssh，就要配置相应的git config</div><div class="line">     branch:master</div></pre></td></tr></table></figure>
+</li>
+<li><p>输入命令</p>
+</li>
+</ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-deployer-git --save</div></pre></td></tr></table></figure>
 <p>至此本地配置已完成，然后要上传到云端<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo d</div></pre></td></tr></table></figure></p>
 <p>此时打开name.github.io,有你想看的</p>
@@ -137,7 +143,7 @@
     <aside id="sidebar" class="alignright">
   <div class="search">
   <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="Søk">
+    <input type="search" name="q" results="0" placeholder="Buscar">
     <input type="hidden" name="q" value="site:yoursite.com">
   </form>
 </div>
