@@ -1485,7 +1485,6 @@ a {
 }
 .article-entry pre {
   color: #fff;
-  overflow: inherit;
 }
 .article-entry pre code {
   background: none;
