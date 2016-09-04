@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>MVVM的数据绑定 | Mz的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="keywords" content="geemo,blog,博客,技术讨论,生活记录,nodejs,c,c++,linux">
+  <meta name="description" content="在这个前端大爆发的年头，追着这些框架跑，真的好无力。angular、vue、react三个框架在领跑着，angular要出2.0了，vue也要2.0了，各种框架蓄势待发，好像潮流又要改一改的节奏。。。 在这个对新手不友好的前端发展阶段，掌握一些核心才是关键。。。好的，我在扯淡，这是本人对mvvm的数据绑定的一些见解，请轻拍">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MVVM的数据绑定">
+<meta property="og:url" content="https://musclejack.github.io/posts/code/5.html">
+<meta property="og:site_name" content="Mz的博客">
+<meta property="og:description" content="在这个前端大爆发的年头，追着这些框架跑，真的好无力。angular、vue、react三个框架在领跑着，angular要出2.0了，vue也要2.0了，各种框架蓄势待发，好像潮流又要改一改的节奏。。。 在这个对新手不友好的前端发展阶段，掌握一些核心才是关键。。。好的，我在扯淡，这是本人对mvvm的数据绑定的一些见解，请轻拍">
+<meta property="og:updated_time" content="2016-09-04T04:59:14.053Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MVVM的数据绑定">
+<meta name="twitter:description" content="在这个前端大爆发的年头，追着这些框架跑，真的好无力。angular、vue、react三个框架在领跑着，angular要出2.0了，vue也要2.0了，各种框架蓄势待发，好像潮流又要改一改的节奏。。。 在这个对新手不友好的前端发展阶段，掌握一些核心才是关键。。。好的，我在扯淡，这是本人对mvvm的数据绑定的一些见解，请轻拍">
+  
+  
+    <link rel="icon" href="/img/mz1.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/mz1.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">mz</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">I want konw &#39;H T M L&#39;</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>链接</li>
+						
+						
+						<li>关于</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">归档</a></li>
+				        
+							<li><a href="/memo.html">备忘录</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" rel="bookmark" target="_blank" href="https://github.com/musclejack" title="github">github</a>
+					        
+								<a class="douban" rel="bookmark" target="_blank" href="#" title="douban">douban</a>
+					        
+								<a class="mail" rel="bookmark" target="_blank" href="mailto:1639632292@qq.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/MVVM/" style="font-size: 10px;">MVVM</a> <a href="/tags/ajax/" style="font-size: 20px;">ajax</a> <a href="/tags/折腾/" style="font-size: 10px;">折腾</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://swfox.github.io">看风的狐狸</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">前后端菜狗，总想搞大新闻。一生热爱，无以为继。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">mz</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/img/mz1.png" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">mz</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">I want konw &#39;H T M L&#39;</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">归档</a></li>
+		        
+					<li><a href="/memo.html">备忘录</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" rel="bookmark" target="_blank" href="https://github.com/musclejack" title="github">github</a>
+			        
+						<a class="douban" rel="bookmark" target="_blank" href="#" title="douban">douban</a>
+			        
+						<a class="mail" rel="bookmark" target="_blank" href="mailto:1639632292@qq.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-5" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/posts/code/5.html" class="article-date">
+  	<time datetime="2016-08-12T14:21:20.000Z" itemprop="datePublished">2016-08-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      MVVM的数据绑定
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MVVM/">MVVM</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/code/">代码</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p> 在这个前端大爆发的年头，追着这些框架跑，真的好无力。angular、vue、react三个框架在领跑着，angular要出2.0了，vue也要2.0了，各种框架蓄势待发，好像潮流又要改一改的节奏。。。<br> 在这个对新手不友好的前端发展阶段，掌握一些核心才是关键。。。好的，我在扯淡，这是本人对mvvm的数据绑定的一些见解，请轻拍<br><a id="more"></a>   </p>
+<h4 id="angular1-x的检脏机制"><a href="#angular1-x的检脏机制" class="headerlink" title="angular1.x的检脏机制"></a>angular1.x的检脏机制</h4><p>先来看一些简单的例子</p>
+<pre><code>&lt;body&gt;
+&lt;span ng-bind = &quot;count&quot;&gt;&lt;/span&gt;
+&lt;button ng-click = &quot;add&quot;&gt;+&lt;/button&gt;
+&lt;button ng-click = &quot;minus&quot;&gt;-&lt;/button&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+var Scope = function(){
+    var scope = this
+    //绑定指令的函数
+    var bind = function(){
+        var click = document.querySelectorAll(&apos;[ng-click]&apos;)
+        click.forEach(function(item){
+            console.log(item.getAttribute(&apos;ng-click&apos;))
+            item.onclick = (function(item){
+                return function(){
+                    scope[item.getAttribute(&apos;ng-click&apos;)]()
+                    scope.$apply()
+                }
+            })(item)
+        })
+    }
+    bind()
+    //检脏函数
+    scope.$apply = function () {
+        var span = document.querySelectorAll(&apos;[ng-bind]&apos;)
+        span.forEach(function(item){
+            if (item.innerHTML!==scope[item.getAttribute(&apos;ng-bind&apos;)]) {
+                item.innerHTML = scope[item.getAttribute(&apos;ng-bind&apos;)]
+            }
+        })
+    }
+    //加法
+    scope.add = function () {
+        scope.count++ 
+    }
+    //减法
+    scope.minus = function () {
+        scope.count-- 
+    }
+    //绑定的数
+    scope.count = 0
+    //初始化
+    scope.$apply()
+}
+Scope()
+&lt;/script&gt;
+&lt;/body&gt;
+</code></pre><p>以上就是简单的实现<br>利用bind函数来将ng-click这个指令分装，在为点击事件绑定相应的方法然后调用apply进行脏检测，而apply方法检测视图的值与js变量值是否一致，不一致则对其进行视图值进行刷新。基本的实现就完成了。<br>在Scope函数的最后加上一个settimeout函数试试</p>
+<pre><code>scope.$apply() //原有的
+//添加settimeout方法
+setTimeout(function(){
+    scope.count++
+    console.log(scope.count)//1
+},1000)
+</code></pre><p>显然上面代码是不行的，虽然值改变了（控制台输出1）,但是页面值没有改变，为什么这样呢？嗯，是没有去检脏导致的，所以我们需要手动得去检脏</p>
+<pre><code>scope.$apply() //原有的
+//添加settimeout方法
+setTimeout(function(){
+    scope.count++
+    console.log(scope.count)//1
+    scope.$apply()
+},1000)
+</code></pre><p>嗯，一切按我们所预想的实现了，页面值也在延时后变化了，这就是angular1.x的检脏机制。<br>原则上就是当变量改变了，就要去调用一次apply，来进行检脏。angular也为此封装了很多指令和服务，为我们自动检脏，例如ng-click，$timeout等<br>现在试着编写一个双向数据绑定的例子</p>
+<pre><code>&lt;body&gt;
+&lt;span ng-bind = &quot;count&quot;&gt;&lt;/span&gt;
+&lt;button ng-click = &quot;add&quot;&gt;+&lt;/button&gt;
+&lt;button ng-click = &quot;minus&quot;&gt;-&lt;/button&gt;
+&lt;input ng-model = &quot;count&quot;/&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+var Scope = function(){
+    var scope = this
+    //绑定指令的函数
+    var bind = function(){
+        var click = document.querySelectorAll(&apos;[ng-click]&apos;)
+        click.forEach(function(item){
+            console.log(item.getAttribute(&apos;ng-click&apos;))
+            item.onclick = (function(item){
+                return function(){
+                    scope[item.getAttribute(&apos;ng-click&apos;)]()
+                    scope.$apply()
+                }
+            })(item)
+        })
+        var input = document.querySelectorAll(&apos;[ng-model]&apos;)
+        input.forEach(function(item){
+            item.onkeyup = function(){
+                scope[item.getAttribute(&apos;ng-model&apos;)] = item.value
+                scope.$apply()
+            }
+            item.select = function(){
+                scope[item.getAttribute(&apos;ng-model&apos;)] = item.value
+                scope.$apply()
+            }
+        })
+    }
+    bind()
+    //检脏函数
+    scope.$apply = function () {
+        var span = document.querySelectorAll(&apos;[ng-bind]&apos;)
+        var input = document.querySelectorAll(&apos;[ng-model]&apos;)
+        span.forEach(function(item){
+            if (item.innerHTML!==scope[item.getAttribute(&apos;ng-bind&apos;)]) {
+                item.innerHTML = scope[item.getAttribute(&apos;ng-bind&apos;)]
+            }
+        })
+        input.forEach(function(item){
+            if (item.value!==scope[item.getAttribute(&apos;ng-model&apos;)]) {
+                item.value = scope[item.getAttribute(&apos;ng-model&apos;)]
+            }
+        })
+    }
+    //加法
+    scope.add = function () {
+        scope.count++ 
+    }
+    //减法
+    scope.minus = function () {
+        scope.count-- 
+    }
+    //绑定的数
+    scope.count = 0
+    //初始化
+    scope.$apply()
+    setTimeout(function(){
+        scope.count++
+        scope.$apply()
+        console.log(scope.count)
+    },1000)
+}
+Scope()
+&lt;/script&gt;
+&lt;/body&gt;
+</code></pre><p>完美实现，这就是简单的双向数据绑定，利用input绑定事件来改变js的值，然后在检脏。<br>其实angular1.x里面的主要实现不一定和本文相符，它的双向绑定的事件也不是本文这样简单的keyup，select;<br>它主要是通过$compile来编译文本，把那些指令都给缓存起来，  这个模板引擎也会被编译成指令，而缓存的对象有视图值，变量值等属性，十分复杂，本文仅仅简单实现一下原理。。。</p>
+<h4 id="vue的劫持get和set的方法"><a href="#vue的劫持get和set的方法" class="headerlink" title="vue的劫持get和set的方法"></a>vue的劫持get和set的方法</h4><p>先来说说Object.defineProperty<br>Object.defineProperty是ES5的一个特性，这也是为什么vue不支持IE8以下的理由。<br>Object.defineProperty(object, propertyname, descriptor)<br>object<br>必需。  要在其上添加或修改属性的对象。  这可能是一个本机 JavaScript 对象（即用户定义的对象或内置对象）或 DOM 对象。<br>propertyname<br>必需。  一个包含属性名称的字符串。<br>descriptor<br>必需。  属性描述符。  它可以针对数据属性或访问器属性。<br>来个栗子</p>
+<pre><code>var test = { key:0 };
+Object.defineProperty(test, &apos;key&apos;, {
+    get: function() {
+        console.log(&apos;get：&apos; + key);
+        //do something
+        return key;
+    },
+    set: function(value) {
+        key = value;
+        console.log(&apos;set:&apos; + key);
+        //do something
+    }
+});
+test.key = 2; // set:2
+console.log(test.key); // get：2
+</code></pre><p>从上面可以看出这个，每次访问或者操作一个对象的内容时都可以触发相应的回调函数（set,get）,这样实时监测对对象的操作，然后在do something执行设置好的监听函数之类的，进行数据的刷新。这样和检脏对比来说，性能可就好了很多，修改一个值，就刷新这个值所绑定的视图，而脏检测就只能遍历所有的新旧值。。。    但这仅限于对象，那在数组里面是怎样的呢，vue是直接把数组的原型给改了,对几个方法进行了封装。<br>请看下面这个栗子     </p>
+<pre><code>Array.prototype.push_old = Array.prototype.push
+delete Array.prototype[&apos;push&apos;]
+Array.prototype.push = function  (data) {
+    this.push_old(data)
+    console.log(&apos;do somthing&apos;)
+}
+var arr = []
+arr.push(2);  //do something
+console.log(arr)  //[2]
+arr.push([3])  //do something
+console.log(arr)  //[2,[3]]
+arr[1].push(3)  //do something
+console.log(arr)  //[2,[3,3]]
+</code></pre><p>这样就简单地把它封装好了，每次push之后，都可以执行相关的函数，把相应的视图进行刷新，很赞。但是vue可能并不是这么简单的玩起来。。下面是在别人blog抄来的一个vue源码节选</p>
+<pre><code>const arrayProto = Array.prototype
+export const arrayMethods = Object.create(arrayProto)
+/**
+ - Intercept mutating methods and emit events
+ */
+;[
+  &apos;push&apos;,
+  &apos;pop&apos;,
+  &apos;shift&apos;,
+  &apos;unshift&apos;,
+  &apos;splice&apos;,
+  &apos;sort&apos;,
+  &apos;reverse&apos;
+]
+.forEach(function (method) {
+  // cache original method
+  var original = arrayProto[method]
+  def(arrayMethods, method, function mutator () {
+    // avoid leaking arguments:
+    // http://jsperf.com/closure-with-arguments
+    var i = arguments.length
+    var args = new Array(i)
+    while (i--) {
+      args[i] = arguments[i]
+    }
+    var result = original.apply(this, args)
+    var ob = this.__ob__
+    var inserted
+    switch (method) {
+      case &apos;push&apos;:
+        inserted = args
+        break
+      case &apos;unshift&apos;:
+        inserted = args
+        break
+      case &apos;splice&apos;:
+        inserted = args.slice(2)
+        break
+    }
+    if (inserted) ob.observeArray(inserted)
+    // notify change
+    ob.dep.notify()
+    return result
+  })
+})
+</code></pre><p>vue把数组的几个方法改掉，用来可以触发监听的视图改变事件。但是这样子，还有一个问题，就是数组arr[1] = 0；这样的操作vue根本没办法检测到这样的操作发生。。为此 Vue.js 在文档中明确提示不建议直接角标修改数据，但也还是提供了一个$set方法来解决这个问题；其本质就是Array原型设置一个$set方法，类似angular的apply检脏；而且需要手动触发，也就是如果写了arr[1] = 0；然后又想要视图改变的话，手动执行$set方法。。  </p>
+<h4 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h4><p>前端真的很有趣。。。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/posts/code/1.html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">AJAX 跨域实现</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="5" data-title="MVVM的数据绑定" data-url="https://musclejack.github.io/posts/code/5.html"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"geemo"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = '/js/duoshuo.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 mz | <a href="http://www.miitbeian.gov.cn/" rel="nofollow" target="_blank">赣ICP备16003662号</a>
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+
+<script>
+	var yiliaConfig = {
+		fancybox: false,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="//cdn.bootcss.com/require-jquery/0.25.0/require-jquery.min.js"></script>
+	
+<script src="/js/main.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
