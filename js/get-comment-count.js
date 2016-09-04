@@ -10,7 +10,6 @@
         if (thread_id && /^post-.+$/.test(thread_id))
             threads.push(thread_id.match(/post-(.+)/)[1]);
     }
-
     if (threads.length) {
         $.getJSON('https://api.duoshuo.com/threads/counts.jsonp?short_name=' 
         	+ short_name + '&threads=' + threads.join(',') + '&callback=?', setCommentCount);
