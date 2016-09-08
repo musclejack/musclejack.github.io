@@ -7,16 +7,16 @@
   <title>MVVM的数据绑定 | Mz的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="keywords" content="mz,blog,博客,技术讨论,生活记录,nodejs,前端">
-  <meta name="description" content="在这个前端大爆发的年头，追着这些框架跑，真的好无力。angular、vue、react三个框架在领跑着，angular要出2.0了，vue也要2.0了，各种框架蓄势待发，好像潮流又要改一改的节奏。。。 在这个对新手不友好的前端发展阶段，掌握一些核心才是关键。。。好的，我在扯淡，这是本人对mvvm的数据绑定的一些见解，请轻拍">
+  <meta name="description" content="在这个前端大爆发的年头，追着这些框架跑，真的好无力。angular、vue、react三个框架在领跑着，angular要出2.0了，vue也要2.0了，各种框架蓄势待发，好像潮流又要改一改的节奏。。。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MVVM的数据绑定">
 <meta property="og:url" content="https://musclejack.github.io/posts/code/5.html">
 <meta property="og:site_name" content="Mz的博客">
-<meta property="og:description" content="在这个前端大爆发的年头，追着这些框架跑，真的好无力。angular、vue、react三个框架在领跑着，angular要出2.0了，vue也要2.0了，各种框架蓄势待发，好像潮流又要改一改的节奏。。。 在这个对新手不友好的前端发展阶段，掌握一些核心才是关键。。。好的，我在扯淡，这是本人对mvvm的数据绑定的一些见解，请轻拍">
-<meta property="og:updated_time" content="2016-09-04T09:18:06.121Z">
+<meta property="og:description" content="在这个前端大爆发的年头，追着这些框架跑，真的好无力。angular、vue、react三个框架在领跑着，angular要出2.0了，vue也要2.0了，各种框架蓄势待发，好像潮流又要改一改的节奏。。。">
+<meta property="og:updated_time" content="2016-09-08T15:09:01.297Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MVVM的数据绑定">
-<meta name="twitter:description" content="在这个前端大爆发的年头，追着这些框架跑，真的好无力。angular、vue、react三个框架在领跑着，angular要出2.0了，vue也要2.0了，各种框架蓄势待发，好像潮流又要改一改的节奏。。。 在这个对新手不友好的前端发展阶段，掌握一些核心才是关键。。。好的，我在扯淡，这是本人对mvvm的数据绑定的一些见解，请轻拍">
+<meta name="twitter:description" content="在这个前端大爆发的年头，追着这些框架跑，真的好无力。angular、vue、react三个框架在领跑着，angular要出2.0了，vue也要2.0了，各种框架蓄势待发，好像潮流又要改一改的节奏。。。">
   
   
     <link rel="icon" href="/img/mz1.jpg">
@@ -116,7 +116,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/MVVM/" style="font-size: 10px;">MVVM</a> <a href="/tags/ajax/" style="font-size: 20px;">ajax</a> <a href="/tags/折腾/" style="font-size: 10px;">折腾</a>
+						<a href="/tags/MVVM/" style="font-size: 10px;">MVVM</a> <a href="/tags/ajax/" style="font-size: 20px;">ajax</a> <a href="/tags/折腾/" style="font-size: 10px;">折腾</a> <a href="/tags/正则/" style="font-size: 10px;">正则</a>
 					</div>
 				</section>
 				
@@ -233,7 +233,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p> 在这个前端大爆发的年头，追着这些框架跑，真的好无力。angular、vue、react三个框架在领跑着，angular要出2.0了，vue也要2.0了，各种框架蓄势待发，好像潮流又要改一改的节奏。。。<br> 在这个对新手不友好的前端发展阶段，掌握一些核心才是关键。。。好的，我在扯淡，这是本人对mvvm的数据绑定的一些见解，请轻拍<br><a id="more"></a>   </p>
+        <p> 在这个前端大爆发的年头，追着这些框架跑，真的好无力。angular、vue、react三个框架在领跑着，angular要出2.0了，vue也要2.0了，各种框架蓄势待发，好像潮流又要改一改的节奏。。。<br> <a id="more"></a><br> 在这个对新手不友好的前端发展阶段，掌握一些核心才是关键。。。好的，我在扯淡，这是本人对mvvm的数据绑定的一些见解，请轻拍 </p>
 <h4 id="angular1-x的检脏机制"><a href="#angular1-x的检脏机制" class="headerlink" title="angular1.x的检脏机制"></a>angular1.x的检脏机制</h4><p>先来看一些简单的例子</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">ng-bind</span> = <span class="string">"count"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">ng-click</span> = <span class="string">"add"</span>&gt;</span>+<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">ng-click</span> = <span class="string">"minus"</span>&gt;</span>-<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="keyword">var</span> Scope = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> scope = <span class="keyword">this</span></div><div class="line">    <span class="comment">//绑定指令的函数</span></div><div class="line">    <span class="keyword">var</span> bind = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">var</span> click = <span class="built_in">document</span>.querySelectorAll(<span class="string">'[ng-click]'</span>)</div><div class="line">        click.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(item.getAttribute(<span class="string">'ng-click'</span>))</div><div class="line">            item.onclick = (<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>&#123;</div><div class="line">                <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">                    scope[item.getAttribute(<span class="string">'ng-click'</span>)]()</div><div class="line">                    scope.$apply()</div><div class="line">                &#125;</div><div class="line">            &#125;)(item)</div><div class="line">        &#125;)</div><div class="line">    &#125;</div><div class="line">    bind()</div><div class="line">    <span class="comment">//检脏函数</span></div><div class="line">    scope.$apply = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> span = <span class="built_in">document</span>.querySelectorAll(<span class="string">'[ng-bind]'</span>)</div><div class="line">        span.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>&#123;</div><div class="line">            <span class="keyword">if</span> (item.innerHTML!==scope[item.getAttribute(<span class="string">'ng-bind'</span>)]) &#123;</div><div class="line">                item.innerHTML = scope[item.getAttribute(<span class="string">'ng-bind'</span>)]</div><div class="line">            &#125;</div><div class="line">        &#125;)</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//加法</span></div><div class="line">    scope.add = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        scope.count++ </div><div class="line">    &#125;</div><div class="line">    <span class="comment">//减法</span></div><div class="line">    scope.minus = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        scope.count-- </div><div class="line">    &#125;</div><div class="line">    <span class="comment">//绑定的数</span></div><div class="line">    scope.count = <span class="number">0</span></div><div class="line">    <span class="comment">//初始化</span></div><div class="line">    scope.$apply()</div><div class="line">&#125;</div><div class="line">Scope()</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>以上就是简单的实现<br>利用bind函数来将ng-click这个指令分装，在为点击事件绑定相应的方法然后调用apply进行脏检测，而apply方法检测视图的值与js变量值是否一致，不一致则对其进行视图值进行刷新。基本的实现就完成了。<br>在Scope函数的最后加上一个settimeout函数试试</p>
@@ -257,6 +257,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/posts/code/6.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          鬼斧神工正则表达式
+        
+      </div>
+    </a>
   
   
     <a href="/posts/code/1.html" id="article-nav-older" class="article-nav-link-wrap">

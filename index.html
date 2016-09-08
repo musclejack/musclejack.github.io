@@ -115,7 +115,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/MVVM/" style="font-size: 10px;">MVVM</a> <a href="/tags/ajax/" style="font-size: 20px;">ajax</a> <a href="/tags/折腾/" style="font-size: 10px;">折腾</a>
+						<a href="/tags/MVVM/" style="font-size: 10px;">MVVM</a> <a href="/tags/ajax/" style="font-size: 20px;">ajax</a> <a href="/tags/折腾/" style="font-size: 10px;">折腾</a> <a href="/tags/正则/" style="font-size: 10px;">正则</a>
 					</div>
 				</section>
 				
@@ -195,6 +195,65 @@
 
       <div class="body-wrap">
   
+    <article id="post-6" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/posts/code/6.html" class="article-date">
+  	<time datetime="2016-08-30T04:11:30.000Z" itemprop="datePublished">2016-08-30</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/posts/code/6.html">鬼斧神工正则表达式</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>好的，这个标题源于我是曾在某课网看的视频，里面还说正则是计算机科学界的一朵奇葩。。好久没用了，于是做个写个总结来记录下，当然也查阅了一些文档和请教了些大神。<br>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/正则/">正则</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/code/">代码</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/posts/code/6.html#more">更多内容 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
     <article id="post-5" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -219,7 +278,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p> 在这个前端大爆发的年头，追着这些框架跑，真的好无力。angular、vue、react三个框架在领跑着，angular要出2.0了，vue也要2.0了，各种框架蓄势待发，好像潮流又要改一改的节奏。。。<br> 在这个对新手不友好的前端发展阶段，掌握一些核心才是关键。。。好的，我在扯淡，这是本人对mvvm的数据绑定的一些见解，请轻拍<br>
+        <p> 在这个前端大爆发的年头，追着这些框架跑，真的好无力。angular、vue、react三个框架在领跑着，angular要出2.0了，vue也要2.0了，各种框架蓄势待发，好像潮流又要改一改的节奏。。。<br>
       
     </div>
     
@@ -278,7 +337,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><ul>
+        <ul>
 <li>想查看其它方法的 ajax 实现，可以看我上一篇文章</li>
 <li>本例跨域是利用src属性来实现，为src属性添加链接后，无论是否跨域，浏览器都会去加载，由此来实现跨域
       
@@ -339,18 +398,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><ul>
+        <ul>
 <li>基于浏览器的XHR对象来实现，所以首先了解下这个对象基本内容<ul>
 <li>status 属性 :连接状态，会随连接状态自己改变，200状态是联通状态 </li>
-<li>readyState 属性 :连接状态属性，默认有4种状态</li>
-<li>responseText 属性 :用来装载返回内容的对象,在返回成功后，该值为返回的内容</li>
-<li>onreadystatechange 方法 :连接状态改变后会触发的回调函数</li>
-<li>open(method,url,true) 方法 :建立连接，定义method，url,还有是否异步，默认异步    </li>
-<li>send(data) 方法：发送内容data;open方法执行后建立连接，再用send方法发送</li>
-<li>setRequestHeader(key,value) 方法：设置发送的header，有重复则覆盖</li>
-</ul>
-</li>
-<li><p>其中基本的原理就是用onreadystatechange这个方法绑定回调函数，用来执行异步加载后的方法</p>
+<li>readyState 属性 :连接状态属性，默认有4种状态
       
     </div>
     

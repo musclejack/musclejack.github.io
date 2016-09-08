@@ -7,21 +7,18 @@
   <title>AJAX 跨域实现 | Mz的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="keywords" content="mz,blog,博客,技术讨论,生活记录,nodejs,前端">
-  <meta name="description" content="前言
-想查看其它方法的 ajax 实现，可以看我上一篇文章
+  <meta name="description" content="想查看其它方法的 ajax 实现，可以看我上一篇文章
 本例跨域是利用src属性来实现，为src属性添加链接后，无论是否跨域，浏览器都会去加载，由此来实现跨域">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AJAX 跨域实现">
 <meta property="og:url" content="https://musclejack.github.io/posts/code/1.html">
 <meta property="og:site_name" content="Mz的博客">
-<meta property="og:description" content="前言
-想查看其它方法的 ajax 实现，可以看我上一篇文章
+<meta property="og:description" content="想查看其它方法的 ajax 实现，可以看我上一篇文章
 本例跨域是利用src属性来实现，为src属性添加链接后，无论是否跨域，浏览器都会去加载，由此来实现跨域">
-<meta property="og:updated_time" content="2016-09-04T08:51:54.399Z">
+<meta property="og:updated_time" content="2016-09-08T14:52:29.368Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AJAX 跨域实现">
-<meta name="twitter:description" content="前言
-想查看其它方法的 ajax 实现，可以看我上一篇文章
+<meta name="twitter:description" content="想查看其它方法的 ajax 实现，可以看我上一篇文章
 本例跨域是利用src属性来实现，为src属性添加链接后，无论是否跨域，浏览器都会去加载，由此来实现跨域">
   
   
@@ -122,7 +119,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/MVVM/" style="font-size: 10px;">MVVM</a> <a href="/tags/ajax/" style="font-size: 20px;">ajax</a> <a href="/tags/折腾/" style="font-size: 10px;">折腾</a>
+						<a href="/tags/MVVM/" style="font-size: 10px;">MVVM</a> <a href="/tags/ajax/" style="font-size: 20px;">ajax</a> <a href="/tags/折腾/" style="font-size: 10px;">折腾</a> <a href="/tags/正则/" style="font-size: 10px;">正则</a>
 					</div>
 				</section>
 				
@@ -239,7 +236,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><ul>
+        <ul>
 <li>想查看其它方法的 ajax 实现，可以看我上一篇文章</li>
 <li>本例跨域是利用src属性来实现，为src属性添加链接后，无论是否跨域，浏览器都会去加载，由此来实现跨域<a id="more"></a>
 <h3 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//ajax.js 文件</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Ajax</span> (<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="comment">//jsonp方法,利用callback=作为句柄,全局注册一个回调函数</span></div><div class="line">    <span class="comment">//如果不希望全局污染，可以在window对象下建立一个命名空间</span></div><div class="line">    <span class="keyword">return</span>&#123;</div><div class="line">        jsonp:<span class="function"><span class="keyword">function</span>(<span class="params">url,callback</span>)</span>&#123;</div><div class="line">            <span class="built_in">window</span>[url.split(<span class="string">'callback='</span>).pop()]=  callback;</div><div class="line">            <span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</div><div class="line">            <span class="built_in">document</span>.getElementsByTagName(<span class="string">'body'</span>)[<span class="number">0</span>].appendChild(script);</div><div class="line">            script.setAttribute(<span class="string">'src'</span>,url);</div><div class="line">            script.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">                <span class="built_in">console</span>.log(<span class="string">'跨域成功'</span>)</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>

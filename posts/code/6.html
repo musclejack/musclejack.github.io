@@ -4,19 +4,19 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>github.io 基础搭建 | Mz的博客</title>
+  <title>鬼斧神工正则表达式 | Mz的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="keywords" content="mz,blog,博客,技术讨论,生活记录,nodejs,前端">
-  <meta name="description" content="基于hexo搭建github page.">
+  <meta name="description" content="好的，这个标题源于我是曾在某课网看的视频，里面还说正则是计算机科学界的一朵奇葩。。好久没用了，于是做个写个总结来记录下，当然也查阅了一些文档和请教了些大神。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="github.io 基础搭建">
-<meta property="og:url" content="https://musclejack.github.io/posts/uncategorized/2.html">
+<meta property="og:title" content="鬼斧神工正则表达式">
+<meta property="og:url" content="https://musclejack.github.io/posts/code/6.html">
 <meta property="og:site_name" content="Mz的博客">
-<meta property="og:description" content="基于hexo搭建github page.">
-<meta property="og:updated_time" content="2016-09-04T08:51:23.388Z">
+<meta property="og:description" content="好的，这个标题源于我是曾在某课网看的视频，里面还说正则是计算机科学界的一朵奇葩。。好久没用了，于是做个写个总结来记录下，当然也查阅了一些文档和请教了些大神。">
+<meta property="og:updated_time" content="2016-09-08T15:09:47.839Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="github.io 基础搭建">
-<meta name="twitter:description" content="基于hexo搭建github page.">
+<meta name="twitter:title" content="鬼斧神工正则表达式">
+<meta name="twitter:description" content="好的，这个标题源于我是曾在某课网看的视频，里面还说正则是计算机科学界的一朵奇葩。。好久没用了，于是做个写个总结来记录下，当然也查阅了一些文档和请教了些大神。">
   
   
     <link rel="icon" href="/img/mz1.jpg">
@@ -194,11 +194,11 @@
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-2" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-6" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/posts/uncategorized/2.html" class="article-date">
-  	<time datetime="2016-05-03T02:19:42.000Z" itemprop="datePublished">2016-05-03</time>
+      <a href="/posts/code/6.html" class="article-date">
+  	<time datetime="2016-08-30T04:11:30.000Z" itemprop="datePublished">2016-08-30</time>
 </a>
     </div>
   
@@ -209,7 +209,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      github.io 基础搭建
+      鬼斧神工正则表达式
     </h1>
   
 
@@ -218,10 +218,14 @@
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/折腾/">折腾</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/正则/">正则</a></li></ul>
 	</div>
 
         
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/code/">代码</a>
+	</div>
+
 
         <div class="clearfix"></div>
       </div>
@@ -229,23 +233,52 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>基于hexo搭建github page.<br><a id="more"></a></p>
-<h2 id="基本步骤"><a href="#基本步骤" class="headerlink" title="基本步骤"></a>基本步骤</h2><h3 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ npm install -g hexo   //全局安装hexo</div><div class="line">$ hexo init             //初始化下载</div><div class="line">$ hexo g                //生成静态页面</div><div class="line">$ hexo s                //本地浏览器打开,默认localhost:4000</div></pre></td></tr></table></figure>
-<p>可以熟悉一下文件目录结构</p>
-<h3 id="GitHub配置"><a href="#GitHub配置" class="headerlink" title="GitHub配置"></a>GitHub配置</h3><ul>
-<li>建立仓库，仓库名为【name.github.io】,其中name为自己在github的昵称</li>
-<li>然后修改hexo安装目录下的_config.yml </li>
+        <p>好的，这个标题源于我是曾在某课网看的视频，里面还说正则是计算机科学界的一朵奇葩。。好久没用了，于是做个写个总结来记录下，当然也查阅了一些文档和请教了些大神。<br><a id="more"></a></p>
+<h4 id="基本的原子"><a href="#基本的原子" class="headerlink" title="基本的原子"></a>基本的原子</h4><ul>
+<li>\w 代表一个0-9,a-z,A-Z,_的任意一个字符</li>
+<li>\s 代表一个看不见的原子，空格和换行,tab</li>
+<li>\n 代表换行符</li>
+<li>\b 代表一个单词边界（字母和空格之间的边界，不是空格）</li>
+<li>\d 代表一个数字</li>
+<li>.  代表除换行符以外（\n）的任意字符    </li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">     <span class="built_in">type</span>: git</div><div class="line">     repo:https://...        //此处为仓库的https地址,    </div><div class="line">     如果设置为ssh，就要配置相应的git config</div><div class="line">     branch:master</div></pre></td></tr></table></figure>
-<ul>
-<li>输入命令</li>
+<h4 id="自定义匹配任意一个的方法"><a href="#自定义匹配任意一个的方法" class="headerlink" title="自定义匹配任意一个的方法"></a>自定义匹配任意一个的方法</h4><ul>
+<li>[abc] 可以匹配abc中任意一个字符</li>
+<li>[^abc] 可以匹配除abc以外的任意一个字符（包括\s能匹配的字符）</li>
+<li>[a-f0-9] 可以匹配a-f和0-9中任意一个字符</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-deployer-git --save</div></pre></td></tr></table></figure>
-<p>至此本地配置已完成，然后要上传到云端<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo d            //第一次可能需要填写用户名和密码</div></pre></td></tr></table></figure></p>
-<p>此时打开name.github.io,有你想看的</p>
-<h3 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ hexo clean        //每次上传前都应该clean一次</div><div class="line">$ hexo g            //生产静态文件</div><div class="line">$ hexo s            //打开本机服务</div><div class="line">$ hexo d            //上传云端</div></pre></td></tr></table></figure>
-<h3 id="主题配置"><a href="#主题配置" class="headerlink" title="主题配置"></a>主题配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git <span class="built_in">clone</span> ...     //找到喜欢的主题，然后输入克隆命令</div></pre></td></tr></table></figure>
-<p>然后修改_config.yml的theme的值 ,一般为目录下的文件夹名字</p>
+<h4 id="设置匹配次数"><a href="#设置匹配次数" class="headerlink" title="设置匹配次数"></a>设置匹配次数</h4><ul>
+<li>{2} 设置匹配次数为2</li>
+<li>{2,5} 设置匹配次数为2到5</li>
+<li>{1,} 设置匹配次数为1次或多次</li>
+<li>? 设置匹配次数为0-1次,相当于{0,1}</li>
+<li>+ 设置匹配次数为1次或以上,相当于{1,}</li>
+<li>* 设置酦醅次数为0次以上，相当于{0,}</li>
+</ul>
+<h4 id="贪婪匹配"><a href="#贪婪匹配" class="headerlink" title="贪婪匹配"></a>贪婪匹配</h4><p>贪婪匹配：\w+ 会匹配后面所以符合要求的字符<br>非贪婪匹配：\w+? 会匹配后面尽可能少的字符<br>下面都用这个字符串来做例子 abbcbcbb  </p>
+<pre><code>a.+c 会匹配到abbcbc
+a.+?c 会匹配到abbc
+</code></pre><p>然后来看看本质是怎么匹配的<br>贪婪匹配是匹配了所有合适字符再回头匹配，同样上面例子   </p>
+<pre><code>匹配了a.+之后,会匹配到abbcbcbb        
+然后回溯查找c，由于b前面还是b,匹陪到的.会减一个，成了abbcbcb    
+接下来匹配c，好的，b前面刚好是c，匹配到的字符成了abbcbc,结束     
+</code></pre><p>非贪婪匹配是匹配了最少的字符在向下匹配，同样上面例子    </p>
+<pre><code>匹配了a.+?之后，会匹配到ab    
+然后查找匹配c,由于b后面还是b，查找不到c，会继续匹配.，也就成了abb    
+接下来在匹配c，好的，下一个正是c，匹配到的字符成了abbc,结束.
+</code></pre><h4 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h4><p>分组应该是正则最有意思的东西了。<br>分组用()来作为一组的单位，我们也可以叫它为一个子串   </p>
+<pre><code>(mz)(\w.+?)(mz)     
+</code></pre><p>这一条正则语句有三个子串，然后假如我们想把匹配到的内容的第二个子串改成“我自己的内容”,我们可以这么做   </p>
+<pre><code>str.replace(/(mz)(\w.+?)(mz)/gi,&apos;$1我自己的内容$3&apos;)    
+</code></pre><p>是的，replace函数允许我们对分组进行引用，引用形式就是$index,index为第几个分组<br>分组不仅允许我们在匹配完成后引用，也可以在匹配时引用    </p>
+<pre><code>([&apos;&quot;])(.*?)(\1) 
+</code></pre><p>可以匹配”‘hello’”,通过+index来表示引用的分组，index为第几个分组    </p>
+<h4 id="一些常用的规则"><a href="#一些常用的规则" class="headerlink" title="一些常用的规则"></a>一些常用的规则</h4><ul>
+<li>^ 匹配输入字符串的开始位置</li>
+<li>$ 匹配输入字符串末尾位置</li>
+<li>| 表示或关系</li>
+</ul>
+<p>如果遇到一些关键字的话，我们需要用\来转义<br>以上是对正则的一些小总结</p>
 
       
     </div>
@@ -255,15 +288,11 @@
     
 <nav id="article-nav">
   
-    <a href="/posts/code/4.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">&lt;</strong>
-      <div class="article-nav-title">
-        
-          简易AJAX实现
-        
-      </div>
-    </a>
   
+    <a href="/posts/code/5.html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">MVVM的数据绑定</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
   
 </nav>
 
@@ -277,7 +306,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2" data-title="github.io 基础搭建" data-url="https://musclejack.github.io/posts/uncategorized/2.html"></div>
+	<div class="ds-thread" data-thread-key="6" data-title="鬼斧神工正则表达式" data-url="https://musclejack.github.io/posts/code/6.html"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
