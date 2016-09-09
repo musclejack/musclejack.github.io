@@ -4,19 +4,19 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>鬼斧神工正则表达式 | Mz的博客</title>
+  <title>正则表达式记录 | Mz的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="keywords" content="mz,blog,博客,技术讨论,生活记录,nodejs,前端">
-  <meta name="description" content="好的，这个标题源于我是曾在某课网看的视频，里面还说正则是计算机科学界的一朵奇葩。。好久没用了，于是做个写个总结来记录下，当然也查阅了一些文档和请教了些大神。">
+  <meta name="description" content="曾在某课网看过些视频，然后聊起正则就想到鬼斧神工这几个字。。视频里还说正则是计算机科学界的一朵奇葩。。好久没用了，于是做个写个总结来记录下，当然也查阅了一些文档和请教了些大神。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="鬼斧神工正则表达式">
+<meta property="og:title" content="正则表达式记录">
 <meta property="og:url" content="https://musclejack.github.io/posts/code/6.html">
 <meta property="og:site_name" content="Mz的博客">
-<meta property="og:description" content="好的，这个标题源于我是曾在某课网看的视频，里面还说正则是计算机科学界的一朵奇葩。。好久没用了，于是做个写个总结来记录下，当然也查阅了一些文档和请教了些大神。">
-<meta property="og:updated_time" content="2016-09-08T15:15:59.228Z">
+<meta property="og:description" content="曾在某课网看过些视频，然后聊起正则就想到鬼斧神工这几个字。。视频里还说正则是计算机科学界的一朵奇葩。。好久没用了，于是做个写个总结来记录下，当然也查阅了一些文档和请教了些大神。">
+<meta property="og:updated_time" content="2016-09-09T06:34:38.175Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="鬼斧神工正则表达式">
-<meta name="twitter:description" content="好的，这个标题源于我是曾在某课网看的视频，里面还说正则是计算机科学界的一朵奇葩。。好久没用了，于是做个写个总结来记录下，当然也查阅了一些文档和请教了些大神。">
+<meta name="twitter:title" content="正则表达式记录">
+<meta name="twitter:description" content="曾在某课网看过些视频，然后聊起正则就想到鬼斧神工这几个字。。视频里还说正则是计算机科学界的一朵奇葩。。好久没用了，于是做个写个总结来记录下，当然也查阅了一些文档和请教了些大神。">
   
   
     <link rel="icon" href="/img/mz1.jpg">
@@ -209,7 +209,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      鬼斧神工正则表达式
+      正则表达式记录
     </h1>
   
 
@@ -233,7 +233,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>好的，这个标题源于我是曾在某课网看的视频，里面还说正则是计算机科学界的一朵奇葩。。好久没用了，于是做个写个总结来记录下，当然也查阅了一些文档和请教了些大神。<br><a id="more"></a></p>
+        <p>曾在某课网看过些视频，然后聊起正则就想到鬼斧神工这几个字。。视频里还说正则是计算机科学界的一朵奇葩。。好久没用了，于是做个写个总结来记录下，当然也查阅了一些文档和请教了些大神。<br><a id="more"></a></p>
 <h4 id="基本的原子"><a href="#基本的原子" class="headerlink" title="基本的原子"></a>基本的原子</h4><ul>
 <li>\w 代表一个0-9,a-z,A-Z,_的任意一个字符</li>
 <li>\s 代表一个看不见的原子，空格、换行、tab</li>
@@ -255,24 +255,13 @@
 <li>+ 设置匹配次数为1次或以上,相当于{1,}</li>
 <li>* 设置酦醅次数为0次以上，相当于{0,}</li>
 </ul>
-<h4 id="贪婪匹配"><a href="#贪婪匹配" class="headerlink" title="贪婪匹配"></a>贪婪匹配</h4><p>贪婪匹配：\w+ 会匹配后面所以符合要求的字符<br>非贪婪匹配：\w+? 会匹配后面尽可能少的字符<br>下面都用这个字符串来做例子 abbcbcbb  </p>
-<pre><code>a.+c 会匹配到abbcbc
-a.+?c 会匹配到abbc
-</code></pre><p>然后来看看本质是怎么匹配的<br>贪婪匹配是匹配了所有合适字符再回头匹配，同样上面例子   </p>
-<pre><code>匹配了a.+之后,会匹配到abbcbcbb        
-然后回溯查找c，由于b前面还是b,匹陪到的.会减一个，成了abbcbcb    
-接下来匹配c，好的，b前面刚好是c，匹配到的字符成了abbcbc,结束     
-</code></pre><p>非贪婪匹配是匹配了最少的字符在向下匹配，同样上面例子    </p>
-<pre><code>匹配了a.+?之后，会匹配到ab    
-然后查找匹配c,由于b后面还是b，查找不到c，会继续匹配.，也就成了abb    
-接下来在匹配c，好的，下一个正是c，匹配到的字符成了abbc,结束.
-</code></pre><h4 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h4><p>分组应该是正则最有意思的东西了。<br>分组用()来作为一组的单位，我们也可以叫它为一个子串   </p>
-<pre><code>(mz)(\w.+?)(mz)     
-</code></pre><p>这一条正则语句有三个子串，然后假如我们想把匹配到的内容的第二个子串改成“我自己的内容”,我们可以这么做   </p>
-<pre><code>str.replace(/(mz)(\w.+?)(mz)/gi,&apos;$1我自己的内容$3&apos;)    
-</code></pre><p>是的，replace函数允许我们对分组进行引用，引用形式就是$index,index为第几个分组<br>分组不仅允许我们在匹配完成后引用，也可以在匹配时引用    </p>
-<pre><code>([&apos;&quot;])(.*?)(\1) 
-</code></pre><p>可以匹配”‘hello’”,通过+index来表示引用的分组，index为第几个分组    </p>
+<h4 id="贪婪匹配"><a href="#贪婪匹配" class="headerlink" title="贪婪匹配"></a>贪婪匹配</h4><p>贪婪匹配：\w+ 会匹配后面所以符合要求的字符<br>非贪婪匹配：\w+? 会匹配后面尽可能少的字符<br>下面都用这个字符串来做例子 abbcbcbb<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">a.+c 会匹配到abbcbc</div><div class="line">a.+?c 会匹配到abbc</div></pre></td></tr></table></figure></p>
+<p>然后来看看本质是怎么匹配的<br>贪婪匹配是匹配了所有合适字符再回头匹配，同样上面例子<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">匹配了a.+之后,会匹配到abbcbcbb        </div><div class="line">然后回溯查找c，由于b前面还是b,匹陪到的.会减一个，成了abbcbcb    </div><div class="line">接下来匹配c，好的，b前面刚好是c，匹配到的字符成了abbcbc,结束</div></pre></td></tr></table></figure></p>
+<p>非贪婪匹配是匹配了最少的字符在向下匹配，同样上面例子<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">匹配了a.+?之后，会匹配到ab    </div><div class="line">然后查找匹配c,由于b后面还是b，查找不到c，会继续匹配.，也就成了abb    </div><div class="line">接下来在匹配c，好的，下一个正是c，匹配到的字符成了abbc,结束.</div></pre></td></tr></table></figure></p>
+<h4 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h4><p>分组应该是正则最有意思的东西了。<br>分组用()来作为一组的单位，我们也可以叫它为一个子串<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(mz)(\w.+?)(mz)</div></pre></td></tr></table></figure></p>
+<p>这一条正则语句有三个子串，然后假如我们想把匹配到的内容的第二个子串改成“我自己的内容”,我们可以这么做<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">str.replace(/(mz)(\w.+?)(mz)/gi,&apos;$1我自己的内容$3&apos;)</div></pre></td></tr></table></figure></p>
+<p>是的，replace函数允许我们对分组进行引用，引用形式就是$index,index为第几个分组<br>分组不仅允许我们在匹配完成后引用，也可以在匹配时引用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">([&apos;&quot;])(.*?)(\1)</div></pre></td></tr></table></figure></p>
+<p>可以匹配”‘hello’”,通过+index来表示引用的分组，index为第几个分组    </p>
 <h4 id="一些常用的规则"><a href="#一些常用的规则" class="headerlink" title="一些常用的规则"></a>一些常用的规则</h4><ul>
 <li>^ 匹配输入字符串的开始位置</li>
 <li>$ 匹配输入字符串末尾位置</li>
@@ -306,7 +295,7 @@ a.+?c 会匹配到abbc
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="6" data-title="鬼斧神工正则表达式" data-url="https://musclejack.github.io/posts/code/6.html"></div>
+	<div class="ds-thread" data-thread-key="6" data-title="正则表达式记录" data-url="https://musclejack.github.io/posts/code/6.html"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
