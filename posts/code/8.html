@@ -4,18 +4,19 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Tag: 算法 | Mz的博客</title>
+  <title>pm2 node的进程守护者 | Mz的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="keywords" content="mz,blog,博客,技术讨论,生活记录,nodejs,前端">
-  <meta name="description" content="Mz,1639632292,blog,博客,菜全栈">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Mz的博客">
-<meta property="og:url" content="https://musclejack.github.io/tags/算法/index.html">
+  <meta name="description" content="最近好颓废，无所事事。在秋招的压力下，我居然选择了刷B站。这是何等怠惰，大脑在颤抖。。。总要做点什么。嗯，怀着这种心态，把服务器重新弄了一遍，域名解析也做了，然后把之前的node服务开起来，本着学点新东西的心态，用上了pm2。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pm2 node的进程守护者">
+<meta property="og:url" content="https://musclejack.github.io/posts/code/8.html">
 <meta property="og:site_name" content="Mz的博客">
-<meta property="og:description" content="Mz,1639632292,blog,博客,菜全栈">
+<meta property="og:description" content="最近好颓废，无所事事。在秋招的压力下，我居然选择了刷B站。这是何等怠惰，大脑在颤抖。。。总要做点什么。嗯，怀着这种心态，把服务器重新弄了一遍，域名解析也做了，然后把之前的node服务开起来，本着学点新东西的心态，用上了pm2。">
+<meta property="og:updated_time" content="2016-09-18T15:42:43.055Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mz的博客">
-<meta name="twitter:description" content="Mz,1639632292,blog,博客,菜全栈">
+<meta name="twitter:title" content="pm2 node的进程守护者">
+<meta name="twitter:description" content="最近好颓废，无所事事。在秋招的压力下，我居然选择了刷B站。这是何等怠惰，大脑在颤抖。。。总要做点什么。嗯，怀着这种心态，把服务器重新弄了一遍，域名解析也做了，然后把之前的node服务开起来，本着学点新东西的心态，用上了pm2。">
   
   
     <link rel="icon" href="/img/mz1.jpg">
@@ -193,58 +194,93 @@
 	</div>
 </nav>
 
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-8" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/posts/code/7.html" class="archive-article-date">
-  	<time datetime="2016-09-14T04:11:30.000Z" itemprop="datePublished">9月 14</time>
+    <div class="article-meta">
+      <a href="/posts/code/8.html" class="article-date">
+  	<time datetime="2016-09-18T14:41:31.000Z" itemprop="datePublished">2016-09-18</time>
 </a>
-        </div>
-    	 
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/posts/code/7.html">最大回文串</a>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      pm2 node的进程守护者
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li></ul>
 	</div>
 
-          
+        
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/code/">代码</a>
 	</div>
 
 
-        </div>
         <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
+      </div>
+      
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近好颓废，无所事事。在秋招的压力下，我居然选择了刷B站。这是何等怠惰，大脑在颤抖。。。总要做点什么。嗯，怀着这种心态，把服务器重新弄了一遍，域名解析也做了，然后把之前的node服务开起来，本着学点新东西的心态，用上了pm2。<br><a id="more"></a></p>
+<h4 id="pm2简单介绍"><a href="#pm2简单介绍" class="headerlink" title="pm2简单介绍"></a>pm2简单介绍</h4><p>pm2 是一个带有负载均衡功能的Node应用的进程管理器.<br>当你要把你的独立代码利用全部的服务器上的所有CPU，并保证进程永远都活着，0秒的重载， PM2是完美的。</p>
+<h4 id="pm2用法"><a href="#pm2用法" class="headerlink" title="pm2用法"></a>pm2用法</h4><p>我觉得最好的教程是它github上的readme。。地址<a href="https://github.com/Unitech/pm2" target="_blank" rel="external">这里</a><br>然后把常用的几个给记录一下<br>首先是安装<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ npm install pm2 -g</div><div class="line"><span class="comment"># 下面是安装v2版本，我没有装这个。。</span></div><div class="line">$ npm install pm2@next -g</div></pre></td></tr></table></figure></p>
+<p>然后是简单用法<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 启动xxx.js</span></div><div class="line">$ pm2 start xxx.js </div><div class="line"><span class="comment"># 监听改变然后自己重启</span></div><div class="line">$ pm2 start xxx.js --watch</div><div class="line"><span class="comment"># 停止进程(好像这个并没有什么用。。我一般是直接删除进程的)</span></div><div class="line">$ pm2 stop [id:name:all]</div><div class="line"><span class="comment"># 删除进程</span></div><div class="line">$ pm2 delete [id:name:all]</div><div class="line"><span class="comment"># 查看进程</span></div><div class="line">$ pm2 list</div><div class="line"><span class="comment"># 查看细节</span></div><div class="line">$ pm2 show [id:name]</div><div class="line"><span class="comment"># 查看log</span></div><div class="line"><span class="variable">$pm2</span> logs [id:name]</div></pre></td></tr></table></figure></p>
+<p>常用的基本就这几个吧，其实查看他的<a href="https://github.com/Unitech/pm2" target="_blank" rel="external">github</a>就有很详细的文档了。。</p>
 
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/posts/code/7.html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">最大回文串</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="8" data-title="pm2 node的进程守护者" data-url="https://musclejack.github.io/posts/code/8.html"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"musclejack"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = '/js/duoshuo.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 </div>
       <footer id="footer">
   <div class="outer">
@@ -267,9 +303,9 @@
 		mathjax: false,
 		animate: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false
 	}
